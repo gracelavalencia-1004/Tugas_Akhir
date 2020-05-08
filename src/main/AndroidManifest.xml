@@ -44,7 +44,6 @@
 
         <receiver android:name=".AlarmManager" />
         <receiver android:name=".AlarmManager2" />
-        <receiver android:name=".AlarmManager3" />
         <receiver android:name=".AlarmManager4" />
 
         <meta-data
