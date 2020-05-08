@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.dietkuy">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".EditResep"
+            android:parentActivityName=".TambahResep" />
+        <activity
+            android:name=".RecipeList"
+            android:parentActivityName=".TambahResep" />
+        <activity
+            android:name=".TulisResep"
+            android:parentActivityName=".TambahResep" />
+        <activity
+            android:name=".EditProfile"
+            android:parentActivityName=".Profil" />
+        <activity
+            android:name=".FoodList"
+            android:parentActivityName=".Cari" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".TambahResep"
+            android:parentActivityName=".Cari" />
+        <activity android:name=".Profil" />
+        <activity android:name=".Cari" />
+        <activity android:name=".PenghitungAir" />
+        <activity android:name=".CatatanHarian" />
+        <activity android:name=".AboutMe2" />
+        <activity android:name=".AboutMe" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".AlarmManager" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

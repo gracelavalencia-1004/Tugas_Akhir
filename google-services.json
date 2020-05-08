@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "71956537668",
+    "firebase_url": "https://diet-kuy.firebaseio.com",
+    "project_id": "diet-kuy",
+    "storage_bucket": "diet-kuy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71956537668:android:1a06475aa311b8e142b711",
+        "android_client_info": {
+          "package_name": "com.example.dietkuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71956537668-bo6hj3khpuvfqj5l5m2rnc9ih1as7npv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dietkuy",
+            "certificate_hash": "062dd9acbd584b644fd5ce187ce361c7942e9aee"
+          }
+        },
+        {
+          "client_id": "71956537668-o7l4p511efc574m14rb7ocnb4ui6hmf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADmanuWJXLVPIyUJOrqXSCyYkFhwsYjLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71956537668-o7l4p511efc574m14rb7ocnb4ui6hmf2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

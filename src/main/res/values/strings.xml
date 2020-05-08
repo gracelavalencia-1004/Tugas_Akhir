@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Diet Kuy!!</string>
+
+    <string-array name="spinner_item">
+        <item>Turun 0.25kg seminggu</item>
+        <item>Turun 0.5kg seminggu</item>
+        <item>Turun 0.75kg seminggu</item>
+        <item>Turun 1kg seminggu</item>
+    </string-array>
+
+    <string-array name="spinner_item2">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+</resources>

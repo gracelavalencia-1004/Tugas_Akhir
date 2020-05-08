@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/catatan_harian"
+        android:title="Catatan Harian"
+        android:icon="@drawable/ic_note" />
+
+    <item
+        android:id="@+id/penghitung_air"
+        android:title="Penghitung Air"
+        android:icon="@drawable/ic_glass" />
+
+    <item
+        android:id="@+id/cari"
+        android:title="Cari"
+        android:icon="@drawable/ic_search" />
+
+    <item
+        android:id="@+id/profil"
+        android:title="Profil"
+        android:icon="@drawable/ic_profile" />
+</menu>

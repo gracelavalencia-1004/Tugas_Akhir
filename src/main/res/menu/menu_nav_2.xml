@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/reset"
+        android:title="Reset data"
+        android:icon="@drawable/ic_restore"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/item1"
+        android:title="Penghitung air"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/item2"
+        android:title="Cari makanan"
+        app:showAsAction="never" />
+
+</menu>
