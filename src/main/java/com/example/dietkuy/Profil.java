@@ -3,6 +3,7 @@ package com.example.dietkuy;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -33,6 +34,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 import com.victor.loading.book.BookLoading;
 
@@ -243,7 +245,12 @@ public class Profil extends AppCompatActivity implements CustomDialogResetPass.C
         user.updatePassword(password).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(Profil.this, "Password telah diganti", Toast.LENGTH_SHORT).show();
+                new StyleableToast.Builder(Profil.this)
+                        .text("Password telah diganti")
+                        .iconStart(R.drawable.ic_lock)
+                        .backgroundColor(Color.WHITE)
+                        .show();
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

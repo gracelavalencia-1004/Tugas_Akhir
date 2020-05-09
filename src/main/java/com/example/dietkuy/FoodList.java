@@ -49,6 +49,7 @@ public class FoodList extends AppCompatActivity implements AdapterView.OnItemSel
     int data;
 
     Button sarapan, makansiang, makanmalam;
+    String jam, menit, detik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,16 +91,14 @@ public class FoodList extends AppCompatActivity implements AdapterView.OnItemSel
 
         showData();
 
-        createNotificationChannel1();
-        createNotificationChannel2();
-        createNotificationChannel3();
+        createNotificationChannel();
 
         sarapan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 customDIalogFood.startLoadingDialog();
 
-                setAlarmSarapan();
+                setAlarm();
 
                 String Makanan = textViewM.getText().toString().trim();
                 final String Kalori = totalKalori.getText().toString().trim();
@@ -131,7 +130,7 @@ public class FoodList extends AppCompatActivity implements AdapterView.OnItemSel
             public void onClick(View v) {
                 customDIalogFood.startLoadingDialog();
 
-                setAlarmMakanSiang();
+                setAlarm();
 
                 String Makanan = textViewM.getText().toString().trim();
                 final String Kalori = totalKalori.getText().toString().trim();
@@ -163,7 +162,7 @@ public class FoodList extends AppCompatActivity implements AdapterView.OnItemSel
             public void onClick(View v) {
                 customDIalogFood.startLoadingDialog();
 
-                setAlarmMakanMalam();
+                setAlarm();
 
                 String Makanan = textViewM.getText().toString().trim();
                 final String Kalori = totalKalori.getText().toString().trim();
@@ -191,86 +190,26 @@ public class FoodList extends AppCompatActivity implements AdapterView.OnItemSel
         });
     }
 
-    private void setAlarmSarapan() {
-        Toast.makeText(this, "Set alarm sarapan", Toast.LENGTH_SHORT).show();
-
+    private void setAlarm() {
         Intent intent = new Intent(FoodList.this, AlarmManager2.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(FoodList.this, 0, intent, 0);
 
         android.app.AlarmManager alarmManager = (android.app.AlarmManager) getSystemService(ALARM_SERVICE);
 
         long currentTime = System.currentTimeMillis();
-        long after10sec = 1000 * 5;
+        long aftersec = 3600 * 1000 * 6;
 
         alarmManager.set(android.app.AlarmManager.RTC_WAKEUP,
-                currentTime + after10sec,
+                currentTime + aftersec,
                 pendingIntent);
     }
 
-    private void createNotificationChannel1() {
+    private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Diet kuy!!";
-            String description = "Anda belum menambahkan data pada sarapan hari ini, sudahkah anda sarapan?";
+            String description = "Sudahkan anda makan hari ini?";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("notifyDietKuy2", name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
-
-    private void setAlarmMakanSiang() {
-        Toast.makeText(this, "Set alarm makan siang", Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(FoodList.this, AlarmManager3.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(FoodList.this, 0, intent, 0);
-
-        android.app.AlarmManager alarmManager = (android.app.AlarmManager) getSystemService(ALARM_SERVICE);
-
-        long currentTime = System.currentTimeMillis();
-        long after10sec = 1000 * 5;
-
-        alarmManager.set(android.app.AlarmManager.RTC_WAKEUP,
-                currentTime + after10sec,
-                pendingIntent);
-    }
-
-    private void createNotificationChannel2() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Diet kuy!!";
-            String description = "Anda belum menambahkan data pada makan siang hari ini, sudahkah anda makan siang?";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("notifyDietKuy3", name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
-
-    private void setAlarmMakanMalam() {
-        Toast.makeText(this, "Set alarm makan malam", Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(FoodList.this, AlarmManager4.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(FoodList.this, 0, intent, 0);
-
-        android.app.AlarmManager alarmManager = (android.app.AlarmManager) getSystemService(ALARM_SERVICE);
-
-        long currentTime = System.currentTimeMillis();
-        long after10sec = 1000 * 5;
-
-        alarmManager.set(android.app.AlarmManager.RTC_WAKEUP,
-                currentTime + after10sec,
-                pendingIntent);
-    }
-
-    private void createNotificationChannel3() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Diet kuy!!";
-            String description = "Anda belum menambahkan data pada makan malam hari ini, sudahkah anda makan malam?";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("notifyDietKuy4", name, importance);
             channel.setDescription(description);
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

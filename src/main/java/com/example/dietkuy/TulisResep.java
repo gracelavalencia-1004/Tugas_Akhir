@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -59,7 +61,7 @@ public class TulisResep extends AppCompatActivity {
 
         DocumentReference db = fStore.collection("recipes").document(userID).collection("resep makanan").document();
 
-        String nama = nama_ET.getText().toString().trim();
+        final String nama = nama_ET.getText().toString().trim();
         String berat = berat_ET.getText().toString().trim();
         String kalori = kalori_ET.getText().toString().trim();
         String desc = desc_ET.getText().toString().trim();
@@ -82,7 +84,12 @@ public class TulisResep extends AppCompatActivity {
                 public void onSuccess(Void aVoid) {
                     spinKitView.setVisibility(View.INVISIBLE);
 
-                    Toast.makeText(TulisResep.this, "Resep telah ditambahkan!!", Toast.LENGTH_SHORT).show();
+                    new StyleableToast.Builder(TulisResep.this)
+                            .text(nama + " telah ditambahkan")
+                            .iconStart(R.drawable.ic_assignment)
+                            .backgroundColor(Color.WHITE)
+                            .show();
+
                     startActivity(new Intent(getApplicationContext(), TambahResep.class));
                 }
             })

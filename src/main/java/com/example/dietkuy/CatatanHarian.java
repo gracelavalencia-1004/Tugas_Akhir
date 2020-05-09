@@ -1,26 +1,20 @@
 package com.example.dietkuy;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -212,9 +206,7 @@ public class CatatanHarian extends AppCompatActivity {
                 for (DocumentSnapshot snapshot: snapshotList) {
                     batch.delete(snapshot.getReference());
                 }
-
                 batch.commit();
-                model2List.clear();
             }
         });
 
@@ -234,7 +226,6 @@ public class CatatanHarian extends AppCompatActivity {
                         }
 
                         batch.commit();
-                        modelList2.clear();
                     }
                 });
 
@@ -254,7 +245,6 @@ public class CatatanHarian extends AppCompatActivity {
                         }
 
                         batch.commit();
-                        modelList22.clear();
                     }
                 });
 
@@ -265,7 +255,51 @@ public class CatatanHarian extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 startActivity(new Intent(getApplicationContext(), CatatanHarian.class));
+
+                fStore.collection("users").document(userID).collection("sarapan").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (DocumentSnapshot doc: task.getResult()) {
+                            ProductModel2 model = new ProductModel2 (doc.getString("Makanan"), doc.getString("Kalori"));
+                            model2List.add(model);
+                        }
+                        adapter = new CustomAdapter2(CatatanHarian.this, model2List);
+                        sarapan_List.setAdapter(adapter);
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(CatatanHarian.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                fStore.collection("users").document(userID).collection("makansiang").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (DocumentSnapshot doc: task.getResult()) {
+                            ProductModel2 model2 = new ProductModel2 (doc.getString("Makanan"), doc.getString("Kalori"));
+                            modelList2.add(model2);
+                        }
+                        adapter2 = new CustomAdapter2(CatatanHarian.this, modelList2);
+                        makansiang_List.setAdapter(adapter2);
+                    }
+                });
+
+                fStore.collection("users").document(userID).collection("makanmalam").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (DocumentSnapshot doc: task.getResult()) {
+                            ProductModel2 model3 = new ProductModel2 (doc.getString("Makanan"), doc.getString("Kalori"));
+                            modelList22.add(model3);
+                        }
+                        adapter3 = new CustomAdapter2(CatatanHarian.this, modelList22);
+                        makanmalam_List.setAdapter(adapter3);
+                    }
+                });
+
                 customDialogList.dissmissDialog();
+                finish();
             }
         });
     }

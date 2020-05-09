@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,6 +31,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.muddzdev.styleabletoast.StyleableToast;
 import com.victor.loading.rotate.RotateLoading;
 import com.warkiz.widget.IndicatorSeekBar;
 
@@ -138,8 +140,11 @@ public class PenghitungAir extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         customDialog.dissmissDialog();
 
-                        Toast.makeText(PenghitungAir.this, indicatorSeekBar.getProgress() + "mL air telah ditambahkan!!", Toast.LENGTH_SHORT).show();
-                        indicatorSeekBar.setProgress(0);
+                        new StyleableToast.Builder(PenghitungAir.this)
+                                .text(indicatorSeekBar.getProgress() + "mL air telah ditambahkan")
+                                .iconStart(R.drawable.ic_glass)
+                                .backgroundColor(Color.WHITE)
+                                .show();
 
                         if (persentase < 100) {
                             keterangan.setText(string1);
@@ -200,7 +205,7 @@ public class PenghitungAir extends AppCompatActivity {
         android.app.AlarmManager alarmManager = (android.app.AlarmManager) getSystemService(ALARM_SERVICE);
 
         long currentTime = System.currentTimeMillis();
-        long after10sec = 1000 * 5;
+        long after10sec = 1000 * 3600 * 6;
 
         alarmManager.set(android.app.AlarmManager.RTC_WAKEUP,
                 currentTime + after10sec,

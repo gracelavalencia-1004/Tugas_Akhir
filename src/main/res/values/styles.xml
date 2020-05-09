@@ -12,4 +12,6 @@
         <item name="android:background">@drawable/label_backgound</item>
         <item name="android:textColor">#ffffff</item>
     </style>
+
+
 </resources>

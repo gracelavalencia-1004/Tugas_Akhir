@@ -13,7 +13,7 @@ public class AlarmManager2 extends BroadcastReceiver {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notifyDietKuy2")
                 .setSmallIcon(R.drawable.ic_logo)
                 .setContentTitle("Diet Kuy!!")
-                .setContentText("Anda belum menambahkan data pada sarapan hari ini, sudahkah anda sarapan?")
+                .setContentText("Sudahkan anda makan hari ini?")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);

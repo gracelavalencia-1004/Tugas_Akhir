@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -117,12 +119,15 @@ public class TambahResep extends AppCompatActivity {
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
             String DocId = model3List.get(position).getDocID();
+            String resep = model3List.get(position).getMakanan();
 
             if (direction == ItemTouchHelper.LEFT) {
                 model3List.remove(position);
                 adapter.notifyItemRemoved(position);
 
                 fStore.collection("recipes").document(userID).collection("resep makanan").document(DocId).delete();
+
+                Snackbar.make(recyclerView, resep + " telah dihapus", Snackbar.LENGTH_SHORT).show();
             }
         }
 
